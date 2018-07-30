@@ -237,7 +237,7 @@ class CommentImpl extends React.Component {
         const dis = cont.get(this.props.content);
 
         if (!dis) {
-            return <div>{tt('g.loading')}...</div>;
+            return <div>{tt('comment_jsx.not_available')}</div>;
         }
 
         // Don't server-side render the comment if it has a certain number of newlines

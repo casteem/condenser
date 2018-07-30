@@ -915,5 +915,8 @@
     "sanitizedlink_jsx": {
         "phishylink_caution": "Link hidden; phishing attempt",
         "phishylink_reveal": "show link"
+    },
+    "comment_jsx": {
+        "not_available": "Comment not available"
     }
 }
