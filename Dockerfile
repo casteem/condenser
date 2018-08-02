@@ -4,10 +4,10 @@ ENV SOURCE_COMMIT ${SOURCE_COMMIT}
 ARG DOCKER_TAG
 ENV DOCKER_TAG ${DOCKER_TAG}
 
-# yarn > npm
-#RUN npm install --global yarn
-RUN npm i -g npm@latest
-RUN npm install -g yarn
+ENV NPM_CONFIG_LOGLEVEL warn
+
+RUN npm config set unsafe-perm true
+RUN npm i npm@latest -g
 
 WORKDIR /var/app
 RUN mkdir -p /var/app
