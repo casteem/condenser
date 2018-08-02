@@ -1,4 +1,4 @@
-FROM node:10-alpine
+FROM node:9-alpine
 
 ARG SOURCE_COMMIT
 ENV SOURCE_COMMIT ${SOURCE_COMMIT}
@@ -27,9 +27,9 @@ COPY . /var/app
 #  npm test && \
 #  ./node_modules/.bin/eslint . && \
 #  npm run build
-RUN yarn fmt
+#RUN yarn fmt
 
-RUN yarn storybook-build
+#RUN yarn storybook-build
 
 RUN mkdir tmp && \
     yarn test && yarn build
