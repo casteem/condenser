@@ -6,11 +6,15 @@ ENV DOCKER_TAG ${DOCKER_TAG}
 
 ENV NPM_CONFIG_LOGLEVEL warn
 
+RUN apk add --no-cache git nano
+
 RUN npm config set unsafe-perm true
 RUN npm i npm@latest -g
 
 WORKDIR /var/app
 RUN mkdir -p /var/app
+
+
 ADD package.json yarn.lock /var/app/
 RUN yarn install --non-interactive --frozen-lockfile
 
