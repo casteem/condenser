@@ -1,22 +1,17 @@
-FROM node:9-alpine
+FROM node:8.7
 
 ARG SOURCE_COMMIT
 ENV SOURCE_COMMIT ${SOURCE_COMMIT}
 ARG DOCKER_TAG
 ENV DOCKER_TAG ${DOCKER_TAG}
 
-ENV NPM_CONFIG_LOGLEVEL warn
+# yarn > npm
+#RUN npm install --global yarn
 
-RUN apk add --no-cache git nano
-
-RUN npm config set unsafe-perm true
-RUN npm i npm@latest -g
 RUN npm install -g yarn
 
 WORKDIR /var/app
 RUN mkdir -p /var/app
-
-
 ADD package.json yarn.lock /var/app/
 RUN yarn install --non-interactive --frozen-lockfile
 
@@ -28,9 +23,6 @@ COPY . /var/app
 #  npm test && \
 #  ./node_modules/.bin/eslint . && \
 #  npm run build
-#RUN yarn fmt
-
-#RUN yarn storybook-build
 
 RUN mkdir tmp && \
     yarn test && yarn build
