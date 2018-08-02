@@ -11,6 +11,7 @@ RUN apk add --no-cache git nano
 
 RUN npm config set unsafe-perm true
 RUN npm i npm@latest -g
+RUN npm install -g yarn
 
 WORKDIR /var/app
 RUN mkdir -p /var/app
